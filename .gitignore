@@ -1,0 +1,15 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignore Mac DS_Store files
+.DS_Store
+**/.DS_Store
+
+.ipynb_checkpoints
+**/.ipynb_checkpoints
