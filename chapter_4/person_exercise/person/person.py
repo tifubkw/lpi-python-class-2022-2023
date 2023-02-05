@@ -1,4 +1,5 @@
 import datetime
+import random
 
 
 class Person:
@@ -71,8 +72,19 @@ class Person:
         someone._check_if_alive(action)
         self._check_if_old_enough(action, age)
         someone._check_if_old_enough(action, age)
-        
-        
+
+    def _make_children_checks(self, someone):
+        action = "have children"
+        age = 18
+        self._check_if_person(someone, action)
+        self._check_if_self(someone, action)
+        self._check_if_parents(someone, action)
+        someone._check_if_parents(self, action)
+        self._check_if_alive(action)
+        someone._check_if_alive(action)
+        self._check_if_old_enough(action, age)
+        someone._check_if_old_enough(action, age)
+
     def unalive(self, new_date_of_death=datetime.date.today()):
         self.date_of_death = new_date_of_death
         
@@ -103,6 +115,34 @@ class Person:
             case _:
                 pass
         return (self, someone,)
+
+    def divorce(self):
+        """
+        This method divorces instance from their spouse
+        """
+        if self.spouse is None:
+            raise ValueError(f"{self} is not married.")
+        spouse = self.spouse
+        self.last_name = self.maiden_name
+        spouse.last_name = spouse.maiden_name
+        spouse.spouse = None
+        self.spouse = None
+        return (self, spouse)
+
+    def procreate(self, someone, first_name, last_name=None, **kwargs):
+        self._make_children_checks(someone)
+        if last_name is None:
+            last_name = self.last_name
+        child = Person(
+            first_name=first_name,
+            last_name=last_name,
+            biological_gender=random.choice(["M", "F"]),
+            parents=[self, someone],
+            **kwargs
+        )
+        self.children.append(child)
+        someone.children.append(child)
+        return child
     
     def __repr__(self):
         return self.first_name + " " + self.last_name
