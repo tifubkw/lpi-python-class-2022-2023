@@ -96,7 +96,7 @@ class ChildrenTestCase(unittest.TestCase):
         """
         Test that a person can't have children with someone too young.
         """
-        person_1 = Person("John", "Smith", "M", [], date_of_birth=datetime.date(2010, 2, 2))
+        person_1 = Person("John", "Smith", "M", [], date_of_birth=datetime.date(2022, 2, 2))
         person_2 = Person("John", "Bryant", "M", [], date_of_birth=datetime.date(1999, 2, 7))
         with self.assertRaises(ValueError) as exception_context:
             person_1.procreate(person_2, "Alex")
@@ -107,7 +107,7 @@ class ChildrenTestCase(unittest.TestCase):
         Test that a person can't have children with someone too young.
         """
         person_1 = Person("John", "Smith", "M", [], date_of_birth=datetime.date(1999, 2, 2))
-        person_2 = Person("John", "Bryant", "M", [], date_of_birth=datetime.date(2010, 2, 7))
+        person_2 = Person("John", "Bryant", "M", [], date_of_birth=datetime.date(2022, 2, 7))
         with self.assertRaises(ValueError) as exception_context:
             person_1.procreate(person_2, "Alex")
             assert str(exception_context.exception) == "John Bryant is too young to have children."

@@ -2,8 +2,10 @@ import datetime
 import random
 
 
+DEFAULT_COUNTRY = "France"
+
+
 class Person:
-    DEFAULT_COUNTRY = "France"
     instances = []
 
     def __init__(
@@ -75,7 +77,7 @@ class Person:
 
     def _make_children_checks(self, someone):
         action = "have children"
-        age = 18
+        age = 5
         self._check_if_person(someone, action)
         self._check_if_self(someone, action)
         self._check_if_parents(someone, action)
@@ -100,7 +102,6 @@ class Person:
             what to do with last name
         """
         self._make_marriage_checks(someone)
-        
         self.spouse = someone
         someone.spouse = self
         
@@ -137,7 +138,7 @@ class Person:
             first_name=first_name,
             last_name=last_name,
             biological_gender=random.choice(["M", "F"]),
-            parents=[self, someone],
+            parents=[self, someone],            
             **kwargs
         )
         self.children.append(child)
@@ -149,3 +150,34 @@ class Person:
     
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+    
+class CatholicPriest(Person):
+    def __init__(
+        self,
+        first_name: str,
+        last_name: str,
+        biological_gender,
+        parents,
+        church=None,
+        spouse=None,
+        children=[],
+        country=DEFAULT_COUNTRY,
+        date_of_birth=datetime.date.today(),
+        date_of_death=None 
+    ):
+        self.church = church
+        super().__init__(
+            first_name,
+            last_name,
+            biological_gender,
+            parents,
+            spouse,
+            children,
+            country,
+            date_of_birth,
+            date_of_death 
+        )
+        
+    def mary(self, *args, **kwargs):
+        raise TypeError("You can't do that, the church forbids it")
