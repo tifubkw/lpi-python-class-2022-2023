@@ -13,6 +13,8 @@ lpi python class 2022-2023 code files
 
 [Chapter 5 - Git and virtual environments](https://docs.google.com/presentation/d/1o9wZmbMprPsfddZie1ncsbtugquiM6YJrmX-NH_6lhM/edit?usp=sharing)
 
+[Chapter 6 - How to go further](https://docs.google.com/presentation/d/1X49f1Rb4zV6qWOEq4r3Nrcyj-QXzO1VFTAmxxeUl6m0/edit?usp=sharing)
+
 ## Project
 
 Here is a link to the [project](https://projects.learningplanetinstitute.org/projects/lpi-python-class-2022-2023/summary) on the Projects website.
